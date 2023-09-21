@@ -23,7 +23,7 @@ public class Main {
                      2.Consultar reservas\s
                      3.Editar reserva
                      4.Eliminar reserva\s
-                     5.Ver cantidad de huespedes en el hotel\s
+                     5.Ver cantidad de huespedes y habitaciones ocupadas en el hotel\s
                      6.Salir""");
             opc = s.next();
             switch (opc) {
@@ -127,7 +127,8 @@ public class Main {
                 }
                 case "5" -> {
                     int huespedestot = repo.findAll().stream().mapToInt(ReservasDTO::getNumberOfPerson).sum();
-                    System.out.println("En el hotel se encuentran "+ huespedestot+" Huespedes");
+                    int totreservas = repo.findAll().size();
+                    System.out.println("En el hotel se encuentran: "+ huespedestot+" huespedes \nEn el hotel hay ocupadas: "+totreservas+" habitaciones" );
                 }
                 case "6"->{
                     opc = "6";
